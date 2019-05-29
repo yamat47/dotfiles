@@ -1,8 +1,6 @@
 [user]
-  name  = Takuya Yamaguchi
-  email = yamaguchi.takuya@live-revolution.co.jp
-;   name  = Takuya Yamaguchi
-;   email = yamaguchi.takuya@live-revolution.co.jp
+  name  = Yamaguchi Takuya
+  email = yamaguchi.takuya.lr@gmail.com
 [core]
   editor = nvim -c \"set fenc=utf-8\"
   pager  = less
