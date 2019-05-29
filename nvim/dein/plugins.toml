@@ -1,0 +1,97 @@
+[[plugins]]
+repo = 'https://gitlab.com/yamat47/molokai'
+hook_add = '''
+  set background=dark
+  au MyAutoCmd VimEnter * nested colorscheme molokai
+'''
+
+[[plugins]]
+repo = 'KeitaNakamura/neodark.vim'
+
+[[plugins]]
+repo = 'joshdick/onedark.vim'
+
+[[plugins]]
+repo = 'Shougo/deoplete.nvim'
+hook_add = '''
+let g:deoplete#enable_at_startup = 1
+
+inoremap <silent><expr> <TAB> pumvisible() ? "\<C-n>" : <SID>check_back_space() ? "\<TAB>" : deoplete#mappings#manual_complete()
+
+function! s:check_back_space() abort "{{{
+let col = col('.') - 1
+return !col || getline('.')[col - 1]  =~ '\s'
+endfunction"}}}
+'''
+
+[[plugins]]
+repo = 'vim-ruby/vim-ruby'
+
+[[plugins]]
+repo = 'tpope/vim-rails'
+
+[[plugins]]
+repo='keith/rspec.vim'
+
+[[plugins]]
+repo = 'tpope/vim-haml'
+
+[[plugins]]
+repo = 'jelera/vim-javascript-syntax'
+
+[[plugins]]
+repo='kchmck/vim-coffee-script'
+
+[[plugins]]
+repo='joker1007/vim-ruby-heredoc-syntax'
+
+[[plugins]]
+repo='plasticboy/vim-markdown'
+hook_add = '''
+let g:vim_markdown_folding_disabled = 1
+let g:vim_markdown_new_list_item_indent = 2
+'''
+
+[[plugins]]
+repo='vim-scripts/moin.vim'
+hook_add = '''
+augroup filetypedetect
+  au BufNewFile,BufRead *.moin setf moin
+  au BufNewFile,BufRead *.wiki setf moin
+augroup END
+'''
+
+[[plugins]]
+repo='cespare/vim-toml'
+
+[[plugins]]
+repo = 'hrp/EnhancedCommentify'
+
+[[plugins]]
+repo = 'tmhedberg/matchit'
+
+[[plugins]]
+repo='godlygeek/tabular'
+
+[[plugins]]
+repo = 'junegunn/vim-easy-align'
+hook_add = '''
+nmap ga <Plug>(EasyAlign)
+xmap ga <Plug>(EasyAlign)
+'''
+
+[[plugins]]
+repo = 'janko-m/vim-test'
+hook_add = '''
+let g:test#strategy = "dispatch"
+let g:test#ruby#rspec#executable = 'spec -c'
+let g:test#ruby#bundle_exec = 0
+
+nmap <Leader>n :TestNearest <CR>
+nmap <Leader>f :TestFile <CR>
+nmap <Leader>s :TestSuite <CR>
+nmap <Leader>l :TestLast <CR>
+'''
+
+[[plugins]]
+repo = 'tpope/vim-dispatch'

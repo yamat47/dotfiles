@@ -1,0 +1,31 @@
+[user]
+  name  = Takuya Yamaguchi
+  email = yamaguchi.takuya@live-revolution.co.jp
+;   name  = Takuya Yamaguchi
+;   email = yamaguchi.takuya@live-revolution.co.jp
+[core]
+  editor = nvim -c \"set fenc=utf-8\"
+  pager  = less
+[color]
+  status = auto
+  diff   = auto
+[diff]
+  compactionHeuristic = true
+[alias]
+  a          = add .
+  br         = branch --verbose --verbose --color
+  ci         = commit -v
+  co         = checkout
+  d          = diff
+  dmb        = "!f () { git branch --merged | egrep -v '\\*|master|release' | xargs git branch -d; }; f"
+  f          = fetch
+  g          = grep --line-number --show-function --color --heading --break
+  l          = log
+  ls         = ls-files
+  onelinelog = log --oneline
+  s          = status --branch --short
+  sd         = diff --staged
+  unstage    = reset HEAD --
+[commit]
+  cleanup = scissors
+
