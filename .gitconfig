@@ -15,8 +15,12 @@
   ci         = commit -v
   co         = checkout
   d          = diff
+  ds         = diff --stat
   dmb        = "!f () { git branch --merged | egrep -v '\\*|master|release' | xargs git branch -d; }; f"
   f          = fetch
+  pf         = fetch --prune
+  pl         = pull
+  ps         = push
   g          = grep --line-number --show-function --color --heading --break
   l          = log
   ls         = ls-files
@@ -24,6 +28,6 @@
   s          = status --branch --short
   sd         = diff --staged
   unstage    = reset HEAD --
+  wt         = worktree
 [commit]
   cleanup = scissors
-
