@@ -1,7 +1,12 @@
-### source .bashrc ##########################################
+### source rc files ##########################################
 
 if [ -f ~/.bashrc ]; then
   . ~/.bashrc
+fi
+
+# path, custom aliases, ... should be set at .zprofile
+if [ -f ~/.zprofile ]; then
+  . ~/.zprofile
 fi
 
 ### base ##########################################
@@ -17,14 +22,12 @@ autoload -Uz _zplugin
 
 zplugin ice atload'!_zsh_git_prompt_precmd_hook' lucid
 zplugin load woefe/git-prompt.zsh
+source "$HOME/.zplugin/plugins/woefe---git-prompt.zsh/examples/wprompt.zsh"
+
 zplugin ice wait '!0'; zplugin load zsh-users/zsh-completions
 zplugin ice wait '!0'; zplugin load zsh-users/zsh-syntax-highlighting
 
 ### aliases #######################################
-
-if [ -f ~/.zsh_aliases ]; then
-  . ~/.zsh_aliases
-fi
 
 case "${OSTYPE}" in
 darwin*)
@@ -54,15 +57,6 @@ alias mkdir="mkdir -p"
 alias g="git"
 
 alias ag="ag --pager 'less -R'"
-
-#### path #########################################
-
-export PATH=$PATH:$HOME/.nodenv/shims:/usr/local/lib/nodenv/shims:/usr/local/lib/nodenv/bin
-export PATH=$PATH:/home/linuxbrew/.linuxbrew/bin:/home/linuxbrew/.linuxbrew/sbin:
-export PATH=$PATH:/usr/local/lib/rbenv/shims:
-
-export PKG_CONFIG_PATH=$PKG_CONFIG_PATH:/usr/share/pkgconfig
-export XDG_CONFIG_HOME=~/.config
 
 ### colors ########################################
 
@@ -105,6 +99,3 @@ setopt pushd_ignore_dups
 
 bindkey '^r' history-incremental-pattern-search-backward
 bindkey '^s' history-incremental-pattern-search-forward
-
-#### direnv ######################################
-eval "$(direnv hook zsh)"
