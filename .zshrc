@@ -1,10 +1,5 @@
-### source rc files ##########################################
+### source .zprofile ##########################################
 
-if [ -f ~/.bashrc ]; then
-  . ~/.bashrc
-fi
-
-# path, custom aliases, ... should be set at .zprofile
 if [ -f ~/.zprofile ]; then
   . ~/.zprofile
 fi
