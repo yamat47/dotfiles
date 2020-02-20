@@ -25,6 +25,7 @@
   l          = log
   ls         = ls-files
   onelinelog = log --oneline
+  rhs        = reset --soft HEAD~
   s          = status --branch --short
   sd         = diff --staged
   unstage    = reset HEAD --
