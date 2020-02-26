@@ -188,5 +188,4 @@ tnoremap <silent> <ESC> <C-\><C-n>
 nnoremap <silent> <ESC><ESC> :nohlsearch <CR>
 nnoremap <silent> <C-n><C-n> :set invnumber<CR>
 
-let g:python_host_prog  = '/home/linuxbrew/.linuxbrew/bin/python'
-let g:python3_host_prog = '/home/linuxbrew/.linuxbrew/bin/python3'
+let g:python3_host_prog = 'FIXME'
