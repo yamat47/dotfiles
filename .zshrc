@@ -9,18 +9,18 @@ fi
 export LANG=ja_JP.UTF-8
 export EDITOR=nvim
 
-### Zplugin #######################################
+### Zinit #######################################
 
-source "$HOME/.zplugin/bin/zplugin.zsh"
-autoload -Uz _zplugin
-(( ${+_comps} )) && _comps[zplugin]=_zplugin
+source "$HOME/.zinit/bin/zinit.zsh"
+autoload -Uz _zinit
+(( ${+_comps} )) && _comps[zinit]=_zinit
 
-zplugin ice atload'!_zsh_git_prompt_precmd_hook' lucid
-zplugin load woefe/git-prompt.zsh
-source "$HOME/.zplugin/plugins/woefe---git-prompt.zsh/examples/wprompt.zsh"
+zinit ice atload'!_zsh_git_prompt_precmd_hook' lucid
+zinit load woefe/git-prompt.zsh
+source "$HOME/.zinit/plugins/woefe---git-prompt.zsh/examples/wprompt.zsh"
 
-zplugin ice wait '!0'; zplugin load zsh-users/zsh-completions
-zplugin ice wait '!0'; zplugin load zsh-users/zsh-syntax-highlighting
+zinit ice wait '!0'; zinit load zsh-users/zsh-completions
+zinit ice wait '!0'; zinit load zsh-users/zsh-syntax-highlighting
 
 ### aliases #######################################
 
