@@ -21,17 +21,17 @@ if dein#load_state('~/.cache/dein')
 
   " Add or remove your plugins here like this:
 
-  call dein#add('Shougo/deoplete.nvim')
-  call dein#add('yamat47/vim-monokai-pro')
-  call dein#add('tpope/vim-rails')
-  call dein#add('tpope/vim-git')
-  call dein#add('Shougo/denite.nvim')
-  call dein#add('Shougo/defx.nvim')
-  call dein#add('Shougo/deol.nvim')
   call dein#add('janko/vim-test')
+  call dein#add('junegunn/vim-easy-align')
+  call dein#add('Shougo/defx.nvim')
+  call dein#add('Shougo/denite.nvim')
+  call dein#add('Shougo/deol.nvim')
+  call dein#add('Shougo/deoplete.nvim')
   call dein#add('thinca/vim-zenspace')
   call dein#add('tpope/vim-commentary')
-  call dein#add('junegunn/vim-easy-align')
+  call dein#add('tpope/vim-rails')
+  call dein#add('tpope/vim-git')
+  call dein#add('yamat47/vim-monokai-pro')
 
   " Required:
   call dein#end()
@@ -48,58 +48,22 @@ if dein#check_install()
 endif
 
 "End dein Scripts-------------------------
+"
+"-- janko/vim-test -------------------------------------
+let test#strategy = 'neovim'
 
-"-- Shougo/deoplete.nvim ----------------------------
-let g:deoplete#enable_at_startup = 1
+let test#ruby#rspec#executable = 'spec'
+let test#javascript#ava#executable = 'yarn test'
 
-"-- tpope/vim-git ----------------------------
-let g:gitcommit_cleanup = "scissors"
+nmap <silent> <C-t><C-n> :TestNearest<CR>
+nmap <silent> <C-t><C-f> :TestFile<CR>
+nmap <silent> <C-t><C-s> :TestSuite<CR>
+nmap <silent> <C-t><C-l> :TestLast<CR>
+nmap <silent> <C-t><C-g> :TestVisit<CR>
 
-"-- yamat47/vim-monokai-pro ----------------------------
-let g:monokai_pro#background = "transparent"
-colorscheme monokai_pro
-set termguicolors
-
-"-- Shougo/denite.nvim ----------------------------
-" Define mappings
-autocmd FileType denite call s:denite_my_settings()
-function! s:denite_my_settings() abort
-  nnoremap <silent><buffer><expr> <CR>    denite#do_map('do_action')
-  nnoremap <silent><buffer><expr> d       denite#do_map('do_action', 'delete')
-  nnoremap <silent><buffer><expr> p       denite#do_map('do_action', 'preview')
-  nnoremap <silent><buffer><expr> q       denite#do_map('quit')
-  nnoremap <silent><buffer><expr> i       denite#do_map('open_filter_buffer')
-  nnoremap <silent><buffer><expr> <Space> denite#do_map('toggle_select').'j'
-endfunction
-
-" Change file/rec command.
-call denite#custom#var('file/rec', 'command', ['ag', '--follow', '--nocolor', '--nogroup', '-g', ''])
-
-" Ag command on grep source
-call denite#custom#var('grep', 'command',        ['ag'])
-call denite#custom#var('grep', 'default_opts',   ['-i', '--vimgrep'])
-call denite#custom#var('grep', 'recursive_opts', [])
-call denite#custom#var('grep', 'pattern_opt',    [])
-call denite#custom#var('grep', 'separator',      ['--'])
-call denite#custom#var('grep', 'final_opts',     [])
-
-" Change ignore_globs
-call denite#custom#filter('matcher/ignore_globs', 'ignore_globs', [ '.git/', '*.css' ])
-
-" Key mapping
-nmap <silent> <C-d><C-g> :<C-u>Denite grep -split=floating<CR>
-nmap <silent> <C-d><C-]> :<C-u>DeniteCursorWord grep -split=floating<CR>
-nmap <silent> <C-d><C-l> :<C-u>Denite file/rec -split=floating file:new<CR>
-nmap <silent> <C-d><C-r> :<C-u>Denite -resume<CR>
-nmap <silent> <C-d><C-n> :<C-u>Denite -resume -cursor-pos=+1 -immediately<CR>
-nmap <silent> <C-d><C-p> :<C-u>Denite -resume -cursor-pos=-1 -immediately<CR>
-
-augroup transparent-windows
-  autocmd!
-  autocmd FileType denite set winblend=50
-  autocmd FileType denite-filter set winblend=50
-augroup END
-
+"-- junegunn/vim-easy-align -----------------------------
+xmap ga <Plug>(EasyAlign)
+nmap ga <Plug>(EasyAlign)
 
 "-- Shougo/defx.nvim -------------------------------------
 autocmd FileType defx call s:defx_my_settings()
@@ -143,21 +107,61 @@ call defx#custom#option('_', {'show_ignored_files': 1})
 " Key mapping
 nmap <silent> <C-d><C-f> :<C-u>Defx<CR>
 
-"-- janko/vim-test -------------------------------------
-let test#strategy = 'neovim'
+"-- Shougo/denite.nvim ----------------------------
+" Define mappings
+autocmd FileType denite call s:denite_my_settings()
+function! s:denite_my_settings() abort
+  nnoremap <silent><buffer><expr> <CR>    denite#do_map('do_action')
+  nnoremap <silent><buffer><expr> d       denite#do_map('do_action', 'delete')
+  nnoremap <silent><buffer><expr> p       denite#do_map('do_action', 'preview')
+  nnoremap <silent><buffer><expr> q       denite#do_map('quit')
+  nnoremap <silent><buffer><expr> i       denite#do_map('open_filter_buffer')
+  nnoremap <silent><buffer><expr> <Space> denite#do_map('toggle_select').'j'
+endfunction
 
-let test#ruby#rspec#executable = 'spec'
-let test#javascript#ava#executable = 'yarn test'
+" Change file/rec command.
+call denite#custom#var('file/rec', 'command', ['ag', '--follow', '--nocolor', '--nogroup', '-g', ''])
 
-nmap <silent> <C-t><C-n> :TestNearest<CR>
-nmap <silent> <C-t><C-f> :TestFile<CR>
-nmap <silent> <C-t><C-s> :TestSuite<CR>
-nmap <silent> <C-t><C-l> :TestLast<CR>
-nmap <silent> <C-t><C-g> :TestVisit<CR>
+" Ag command on grep source
+call denite#custom#var('grep', 'command',        ['ag'])
+call denite#custom#var('grep', 'default_opts',   ['-i', '--vimgrep'])
+call denite#custom#var('grep', 'recursive_opts', [])
+call denite#custom#var('grep', 'pattern_opt',    [])
+call denite#custom#var('grep', 'separator',      ['--'])
+call denite#custom#var('grep', 'final_opts',     [])
 
-"-- junegunn/vim-easy-align -----------------------------
-xmap ga <Plug>(EasyAlign)
-nmap ga <Plug>(EasyAlign)
+" Change ignore_globs
+call denite#custom#filter('matcher/ignore_globs', 'ignore_globs', [ '.git/', '*.css' ])
+
+" Key mapping
+nmap <silent> <C-d><C-g> :<C-u>Denite grep -split=floating<CR>
+nmap <silent> <C-d><C-]> :<C-u>DeniteCursorWord grep -split=floating<CR>
+nmap <silent> <C-d><C-l> :<C-u>Denite file/rec -split=floating file:new<CR>
+nmap <silent> <C-d><C-r> :<C-u>Denite -resume<CR>
+nmap <silent> <C-d><C-n> :<C-u>Denite -resume -cursor-pos=+1 -immediately<CR>
+nmap <silent> <C-d><C-p> :<C-u>Denite -resume -cursor-pos=-1 -immediately<CR>
+
+augroup transparent-windows
+  autocmd!
+  autocmd FileType denite set winblend=50
+  autocmd FileType denite-filter set winblend=50
+augroup END
+
+"-- Shougo/deol.nvim ----------------------------
+let g:deol#shell_history_path = '~/.zsh_history'
+
+nnoremap <silent> <C-d><C-o> :<C-u>Deol -split=vertical<CR>
+
+"-- Shougo/deoplete.nvim ----------------------------
+let g:deoplete#enable_at_startup = 1
+
+"-- tpope/vim-git ----------------------------
+let g:gitcommit_cleanup = "scissors"
+
+"-- yamat47/vim-monokai-pro ----------------------------
+let g:monokai_pro#background = "transparent"
+colorscheme monokai_pro
+set termguicolors
 
 "-- pure neovim configuration ----------------------------
 set whichwrap=b,s,h,l,>,[,]
