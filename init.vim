@@ -32,6 +32,7 @@ if dein#load_state('~/.cache/dein')
   call dein#add('tpope/vim-rails')
   call dein#add('tpope/vim-git')
   call dein#add('yamat47/vim-monokai-pro')
+  call dein#add('yamat47/trac-vim-plugin')
 
   " Required:
   call dein#end()
