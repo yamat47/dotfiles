@@ -1,6 +1,6 @@
 [user]
   name  = Yamaguchi Takuya
-  email = yamaguchi.takuya.lr@gmail.com
+  email = yamat47.thirddown@gmail.com
 [core]
   editor = nvim -c \"set fenc=utf-8\"
   pager  = less
@@ -28,6 +28,7 @@
   rhs        = reset --soft HEAD~
   s          = status --branch --short
   sd         = diff --staged
+  sw         = switch
   unstage    = reset HEAD --
   wt         = worktree
 [commit]

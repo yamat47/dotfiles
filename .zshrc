@@ -53,6 +53,8 @@ alias g="git"
 
 alias ag="ag --pager 'less -R'"
 
+alias be="bundle exec"
+
 ### colors ########################################
 
 autoload -Uz colors
@@ -94,3 +96,17 @@ setopt pushd_ignore_dups
 
 bindkey '^r' history-incremental-pattern-search-backward
 bindkey '^s' history-incremental-pattern-search-forward
+
+#### shell function ######################################
+
+# https://ryym.tokyo/posts/delete-squash-merged-branch/
+function git-squash-merge() {
+  git checkout -q master && \
+    git for-each-ref refs/heads/ "--format=%(refname:short)" | \
+    while read branch; do
+      mergeBase=$(git merge-base master $branch) && \
+        [[ $(git cherry master $(git commit-tree $(git rev-parse $branch^{tree}) -p $mergeBase -m _)) == "-"* ]] && \
+        git branch -D $branch;
+      done
+}
+alias git-squash-merge=git-squash-merge
