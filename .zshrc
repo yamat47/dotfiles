@@ -24,19 +24,9 @@ zinit ice wait '!0'; zinit load zsh-users/zsh-syntax-highlighting
 
 ### aliases #######################################
 
-case "${OSTYPE}" in
-darwin*)
-  alias ll="ls -lG"
-  alias la="ls -laG"
-  alias ls="ls -G"
-  ;;
-linux*)
-  alias l.="ls -d .* --color=auto"
-  alias ll="ls -l --color=auto"
-  alias la="ls -al --color=auto"
-  alias ls="ls --color=auto"
-  ;;
-esac
+alias ll="ls -lG"
+alias la="ls -laG"
+alias ls="ls -G"
 
 alias -g L='| less -R'
 alias -g H='| head'
