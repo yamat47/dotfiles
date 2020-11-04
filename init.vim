@@ -33,6 +33,8 @@ if dein#load_state('~/.cache/dein')
   call dein#add('tpope/vim-git')
   call dein#add('yamat47/vim-monokai-pro')
   call dein#add('yamat47/trac-vim-plugin')
+  call dein#add('slim-template/vim-slim')
+  call dein#add('dense-analysis/ale')
 
   " Required:
   call dein#end()
@@ -53,7 +55,7 @@ endif
 "-- janko/vim-test -------------------------------------
 let test#strategy = 'neovim'
 
-let test#ruby#rspec#executable = 'spec'
+let test#ruby#rspec#executable = 'docker-compose exec web bundle exec rspec'
 let test#javascript#ava#executable = 'yarn test'
 
 nmap <silent> <C-t><C-n> :TestNearest<CR>
@@ -164,6 +166,17 @@ let g:monokai_pro#background = "transparent"
 colorscheme monokai_pro
 set termguicolors
 
+"-- dense-analysis/ale ------------------------------------
+let g:ale_linters = {
+\   'javascript': ['eslint'],
+\   'ruby': ['rubocop'],
+\}
+let g:ale_fixers = {
+\   '*': ['remove_trailing_lines', 'trim_whitespace'],
+\}
+
+let g:ale_fix_on_save = 1
+
 "-- pure neovim configuration ----------------------------
 set whichwrap=b,s,h,l,>,[,]
 set matchpairs=(:),{:},[:],<:>
@@ -193,4 +206,4 @@ tnoremap <silent> <ESC> <C-\><C-n>
 nnoremap <silent> <ESC><ESC> :nohlsearch <CR>
 nnoremap <silent> <C-n><C-n> :set invnumber<CR>
 
-let g:python3_host_prog = 'FIXME'
+let g:python3_host_prog = '/usr/bin/python3'

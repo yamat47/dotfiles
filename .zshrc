@@ -100,3 +100,5 @@ function git-squash-merge() {
       done
 }
 alias git-squash-merge=git-squash-merge
+
+test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"

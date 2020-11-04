@@ -12,11 +12,13 @@
 [alias]
   a          = add .
   br         = branch --verbose --verbose --color
+  ca         = commit -v --amend
+  cf         = commit -v --fixup=HEAD
   ci         = commit -v
   co         = checkout
   d          = diff
   ds         = diff --stat
-  dmb        = "!f () { git branch --merged | egrep -v '\\*|master|release' | xargs git branch -d; }; f"
+  dmb        = !git branch --merged | egrep -v '\\*|master|release' | xargs git branch -d
   f          = fetch
   pf         = fetch --prune
   pl         = pull
@@ -26,10 +28,16 @@
   ls         = ls-files
   onelinelog = log --oneline
   rhs        = reset --soft HEAD~
+  ri         = !sh -c 'git rebase -i HEAD~$0'
   s          = status --branch --short
   sd         = diff --staged
   sw         = switch
+  swf        = !git branch -a | fzf | xargs git switch
   unstage    = reset HEAD --
   wt         = worktree
 [commit]
   cleanup = scissors
+[pull]
+  rebase = false
+[init]
+  defaultBranch = main
