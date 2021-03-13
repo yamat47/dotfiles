@@ -38,6 +38,6 @@
 [commit]
   cleanup = scissors
 [pull]
-  rebase = false
+  rebase = true
 [init]
   defaultBranch = main
