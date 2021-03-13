@@ -41,5 +41,3 @@
   rebase = true
 [init]
   defaultBranch = main
-[ghq]
-  root = /Users/takuya_yamaguchi/src
