@@ -1,6 +1,7 @@
 [user]
   name  = Yamaguchi Takuya
   email = yamat47.thirddown@gmail.com
+  signingkey = FIXME
 [core]
   editor = nvim -c \"set fenc=utf-8\"
   pager  = less
@@ -24,7 +25,7 @@
   pl         = pull
   ps         = push
   g          = grep --line-number --show-function --color --heading --break
-  l          = log
+  l          = log --show-signature
   ls         = ls-files
   onelinelog = log --oneline
   rhs        = reset --soft HEAD~
@@ -37,7 +38,13 @@
   wt         = worktree
 [commit]
   cleanup = scissors
+  gpgsign = true
 [pull]
   rebase = true
 [init]
   defaultBranch = main
+[pager]
+  log = diff-highlight | less
+  show = diff-highlight | less
+  diff = diff-highlight | less
+
