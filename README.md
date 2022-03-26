@@ -14,8 +14,12 @@ brew bundle
 * Set "/Users/yamat47/.config/dotfiles" as custom folder.
 * Restart iTerm2.
 
-## Start using dotfiles.
+## Start using dotfiles
 ```sh
 chmod 0777 setup.sh
 ./setup.sh
 ```
+
+## Git setting
+* Create and register new SSH and GPG keys on GitHub ([Reference](https://github.com/settings/keys)).
+* Update `.gitconfig`.
