@@ -48,6 +48,7 @@ cask "notion"
 cask "postman"
 cask "slack"
 cask "visual-studio-code"
+cask "zoom"
 mas "Bitwarden", id: 1352778147
 mas "HotKey", id: 975890633
 mas "iMovie", id: 408981434
@@ -55,5 +56,4 @@ mas "LINE", id: 539883307
 mas "Notion Web Clipper", id: 1559269364
 mas "Playgrounds", id: 1496833156
 mas "Todoist", id: 585829637
-mas "Twitter", id: 1482454543
 mas "Xcode", id: 497799835
