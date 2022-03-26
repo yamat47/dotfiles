@@ -7,3 +7,9 @@
 ```sh
 brew bundle
 ```
+
+## Start using dotfiles.
+```sh
+chmod 0777 setup.sh
+./setup.sh
+```
