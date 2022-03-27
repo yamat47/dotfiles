@@ -34,7 +34,7 @@ set runtimepath+=/Users/yamat47/.cache/dein/repos/github.com/Shougo/dein.vim
 
 call dein#begin('/Users/yamat47/.cache/dein')
 call dein#add('/Users/yamat47/.cache/dein/repos/github.com/Shougo/dein.vim')
-call dein#add('tpope/vim-rails')
+call dein#load_toml('~/.config/nvim/plugins.toml', {'lazy': 0})
 call dein#end()
 
 filetype plugin indent on
