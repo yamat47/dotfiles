@@ -25,3 +25,21 @@ nnoremap <silent> <ESC><ESC> :nohlsearch <CR>
 nnoremap <silent> <C-n><C-n> :set invnumber<CR>
 
 set termguicolors
+
+if &compatible
+  set nocompatible
+endif
+
+set runtimepath+=/Users/yamat47/.cache/dein/repos/github.com/Shougo/dein.vim
+
+call dein#begin('/Users/yamat47/.cache/dein')
+call dein#add('/Users/yamat47/.cache/dein/repos/github.com/Shougo/dein.vim')
+call dein#add('tpope/vim-rails')
+call dein#end()
+
+filetype plugin indent on
+syntax enable
+
+if dein#check_install()
+  call dein#install()
+endif
