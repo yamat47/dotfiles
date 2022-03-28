@@ -69,6 +69,9 @@ endfunction
 repo = 'Shougo/ddu-source-file_rec'
 
 [[plugins]]
+repo = 'Shougo/ddu-source-line'
+
+[[plugins]]
 repo = 'Shougo/ddu-filter-matcher_substring'
 
 [[plugins]]
@@ -82,7 +85,10 @@ repo = 'Shougo/ddu.vim'
 hook_add = '''
 call ddu#custom#patch_global({
     \   'ui': 'ff',
-    \   'sources': [{'name': 'file_rec', 'params': {}}],
+    \   'sources': [
+    \     {'name': 'file_rec', 'params': {}},
+    \     {'name': 'line'},
+    \   ],
     \   'sourceOptions': {
     \     '_': {
     \       'matchers': ['matcher_substring'],
