@@ -8,6 +8,7 @@ call ddu#custom#patch_global({
     \   'sources': [
     \     {'name': 'file_rec'},
     \     {'name': 'line'},
+    \     {'name': 'rg'},
     \   ],
     \   'sourceOptions': {
     \     '_': {
@@ -17,6 +18,9 @@ call ddu#custom#patch_global({
     \   'sourceParams': {
     \     'file_rec': {
     \       'ignoredDirectories': ['.git', 'tmp', 'node_modules', 'docker'],
+    \      },
+    \     'rg': {
+    \       'args': ['--column', '--no-heading', '--color', 'never'],
     \      },
     \   },
     \   'filterParams': {
@@ -63,6 +67,10 @@ on_source = 'ddu.vim'
 
 [[plugins]]
 repo = 'Shougo/ddu-source-line'
+on_source = 'ddu.vim'
+
+[[plugins]]
+repo = 'shun/ddu-source-rg'
 on_source = 'ddu.vim'
 
 [[plugins]]
