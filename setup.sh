@@ -15,3 +15,4 @@ ln -sF $HOME/.config/dotfiles/ddu.toml $HOME/.config/nvim
 
 # Git setting
 ln -sF $HOME/.config/dotfiles/.gitconfig $HOME
+cp $HOME/.config/dotfiles/.gitconfig.local.sample $HOME/.gitconfig.local

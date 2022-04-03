@@ -1,10 +1,8 @@
-[user]
-  name  = Yamaguchi Takuya
-  email = yamat47.thirddown@gmail.com
-  signingkey = FIXME
 [core]
   editor = nvim -c \"set fenc=utf-8\"
   pager  = less
+[include]
+    path = ~/.gitconfig.local
 [color]
   status = auto
   diff   = auto
