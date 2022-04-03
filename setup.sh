@@ -10,6 +10,8 @@ ln -sF $HOME/.config/dotfiles/.zshrc $HOME
 # Neovim setting
 mkdir -p $HOME/.config/nvim
 ln -sF $HOME/.config/dotfiles/init.vim $HOME/.config/nvim
+ln -sF $HOME/.config/dotfiles/plugins.toml $HOME/.config/nvim
+ln -sF $HOME/.config/dotfiles/ddu.toml $HOME/.config/nvim
 
 # Git setting
 ln -sF $HOME/.config/dotfiles/.gitconfig $HOME
