@@ -71,6 +71,26 @@ hook_add = '''
 '''
 
 [[plugins]]
+repo = 'Shougo/ddu-ui-filer'
+on_source = 'ddu.vim'
+hook_add = '''
+  autocmd FileType ddu-filer call s:ddu_my_settings()
+  function! s:ddu_my_settings() abort
+    nnoremap <buffer><silent> <CR>    <Cmd>call ddu#ui#filer#do_action('itemAction')<CR>
+    nnoremap <buffer><silent> <Space> <Cmd>call ddu#ui#filer#do_action('toggleSelectItem')<CR>
+    nnoremap <buffer><silent> i       <Cmd>call ddu#ui#filer#do_action('openFilterWindow')<CR>
+    nnoremap <buffer><silent> q       <Cmd>call ddu#ui#filer#do_action('quit')<CR>
+  endfunction
+
+  autocmd FileType ddu-filer-filter call s:ddu_filter_my_settings()
+  function! s:ddu_filter_my_settings() abort
+    inoremap <buffer><silent> <CR> <Esc><Cmd>close<CR>
+    nnoremap <buffer><silent> <CR> <Cmd>close<CR>
+    nnoremap <buffer><silent> q    <Cmd>close<CR>
+  endfunction
+'''
+
+[[plugins]]
 repo = 'Shougo/ddu-source-file_rec'
 on_source = 'ddu.vim'
 
