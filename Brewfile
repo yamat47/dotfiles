@@ -30,6 +30,7 @@ brew "mysql", restart_service: true
 brew "neovim"
 brew "node-build"
 brew "nodenv"
+brew "pinentry-mac"
 brew "postgresql", restart_service: true
 brew "ruby-build"
 brew "rbenv"
