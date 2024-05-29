@@ -8,21 +8,22 @@ export LANG=ja_JP.UTF-8
 export EDITOR=nvim
 
 ### zinit ###
-source "$HOME/.zinit/bin/zinit.zsh"
+ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit"
+source "${ZINIT_HOME}/zinit.git/zinit.zsh"
 autoload -Uz _zinit
 (( ${+_comps} )) && _comps[zinit]=_zinit
 
 # Load a few important annexes, without Turbo
 # (this is currently required for annexes)
 zinit light-mode for \
-    zinit-zsh/z-a-rust \
-    zinit-zsh/z-a-as-monitor \
-    zinit-zsh/z-a-patch-dl \
-    zinit-zsh/z-a-bin-gem-node
+    zdharma-continuum/z-a-rust \
+    zdharma-continuum/z-a-as-monitor \
+    zdharma-continuum/z-a-patch-dl \
+    zdharma-continuum/z-a-bin-gem-node
 
 zinit ice atload'!_zsh_git_prompt_precmd_hook' lucid
 zinit load woefe/git-prompt.zsh
-source "$HOME/.zinit/plugins/woefe---git-prompt.zsh/examples/wprompt.zsh"
+source "${ZINIT_HOME}/plugins/woefe---git-prompt.zsh/examples/wprompt.zsh"
 
 zinit ice wait '!0'; zinit load zsh-users/zsh-completions
 zinit ice wait '!0'; zinit load zsh-users/zsh-syntax-highlighting
@@ -78,3 +79,14 @@ setopt pushd_ignore_dups
 
 bindkey '^r' history-incremental-pattern-search-backward
 bindkey '^s' history-incremental-pattern-search-forward
+
+function docker_bash() {
+    local container_id=$(docker ps --format '{{.ID}}\t{{.Names}}' | fzf --height 40% --layout=reverse | awk '{print $1}')
+    if [ -n "$container_id" ]; then
+        docker exec -it "$container_id" sh || echo "Failed to start bash in container: $container_id"
+    else
+        echo "No container selected."
+    fi
+}
+
+alias db="docker_bash"

@@ -8,6 +8,12 @@
   diff   = auto
 [diff]
   compactionHeuristic = true
+  tool                = difftastic
+  external            = difft
+[difftool]
+  prompt = false
+[difftool "difftastic"]
+  cmd = difft "$LOCAL" "$REMOTE"
 [alias]
   a          = add .
   br         = branch --verbose --verbose --color
@@ -42,7 +48,7 @@
 [init]
   defaultBranch = main
 [pager]
-  log = diff-highlight | less
-  show = diff-highlight | less
-  diff = diff-highlight | less
-
+  log      = diff-highlight | less
+  show     = diff-highlight | less
+  diff     = diff-highlight | less
+  difftool = true
