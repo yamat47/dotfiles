@@ -41,6 +41,8 @@ alias g="git"
 
 alias gl='cd $(ghq list -p | fzf)'
 
+alias lzd="lazydocker"
+
 ### colors ###
 autoload -Uz colors
 colors
@@ -83,10 +85,12 @@ bindkey '^s' history-incremental-pattern-search-forward
 function docker_bash() {
     local container_id=$(docker ps --format '{{.ID}}\t{{.Names}}' | fzf --height 40% --layout=reverse | awk '{print $1}')
     if [ -n "$container_id" ]; then
-        docker exec -it "$container_id" sh || echo "Failed to start bash in container: $container_id"
+        docker exec -it "$container_id" bash || echo "Failed to start bash in container: $container_id"
     else
         echo "No container selected."
     fi
 }
 
 alias db="docker_bash"
+
+alias c="code ."
