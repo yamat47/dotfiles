@@ -1,4 +1,4 @@
+# Machine-local identity. Copy to ~/.gitconfig.local; not tracked in dotfiles.
 [user]
   name  = FIXME
   email = FIXME
-  signingkey = FIXME

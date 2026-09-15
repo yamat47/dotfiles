@@ -1,95 +1,69 @@
-tap "agrinman/tap"
-tap "heroku/brew"
-tap "homebrew/bundle"
-tap "homebrew/services"
-tap "minio/stable"
-tap "stripe/stripe-cli"
-tap "teamookla/speedtest"
-brew "glib"
-brew "libyaml"
-brew "cocoapods"
-brew "curl"
-brew "php"
-brew "composer"
-brew "deno"
-brew "difftastic"
-brew "docker", link: false
-brew "unbound"
-brew "gnutls"
-brew "harfbuzz"
-brew "libarchive"
-brew "libass"
-brew "ffmpeg"
-brew "flyctl"
+# Clone of cat(1) with syntax highlighting and Git integration
+brew "bat"
+# Container runtimes on MacOS (and Linux) with minimal setup
+brew "colima"
+# Pack, ship and run any application as a lightweight container
+brew "docker"
+# Docker CLI plugin for extended build capabilities with BuildKit
+brew "docker-buildx"
+# Isolated development environments using Docker
+brew "docker-compose"
+# Modern, maintained replacement for ls
+brew "eza"
+# Simple, fast and user-friendly alternative to find
+brew "fd"
+# Command-line fuzzy finder written in Go
 brew "fzf"
-brew "gcc"
+# GitHub command-line tool
 brew "gh"
+# Remote repository management made easy
 brew "ghq"
+# Distributed revision control system
 brew "git"
-brew "pinentry"
-brew "gnupg"
-brew "go"
-brew "gobject-introspection"
-brew "shared-mime-info"
-brew "libraw"
-brew "imagemagick"
-brew "jq"
+# Lazier way to manage everything docker
 brew "lazydocker"
-brew "mas"
-brew "mysql"
+# Next-gen compiler infrastructure
+brew "llvm@22"
+# Language Server for the Lua language
+brew "lua-language-server"
+# Polyglot runtime manager (asdf rust clone)
+brew "mise"
+# Ambitious Vim-fork focused on extensibility and agility
 brew "neovim"
-brew "node-build"
-brew "nodenv"
-brew "pinentry-mac"
-brew "postgresql@14"
-brew "potrace"
-brew "python@3.9"
-brew "rbenv"
+# Search tool like grep and The Silver Searcher
 brew "ripgrep"
-brew "rust"
-brew "tree"
-brew "watchman"
-brew "heroku/brew/heroku"
-brew "minio/stable/minio"
-brew "stripe/stripe-cli/stripe"
-brew "teamookla/speedtest/speedtest"
-cask "alfred"
+# Cross-shell prompt for astronauts
+brew "starship"
+# Parser generator tool
+brew "tree-sitter-cli"
+# Command-line tool to install and switch between multiple versions of Xcode
+brew "xcodes"
+# Fish-like fast/unobtrusive autosuggestions for zsh
+brew "zsh-autosuggestions"
+# Additional completion definitions for zsh
+brew "zsh-completions"
+# Fish shell like syntax highlighting for zsh
+brew "zsh-syntax-highlighting"
+# Application uninstaller
 cask "appcleaner"
+# Desktop password and login vault
 cask "bitwarden"
-cask "discord"
-cask "docker"
-cask "google-chrome"
+# Anthropic's official Claude AI desktop app
+cask "claude"
+# Terminal-based AI coding assistant
+cask "claude-code@latest"
+# Collaborative team software
+cask "figma"
+cask "font-hackgen-nerd"
+# Terminal emulator as alternative to Apple's Terminal app
 cask "iterm2"
+# Keyboard customiser
 cask "karabiner-elements"
-cask "ngrok"
-cask "notion"
-cask "orbstack"
-cask "postman"
-cask "slack"
-cask "visual-studio-code"
-cask "zoom"
-mas "Bitwarden", id: 1352778147
-mas "HotKey", id: 975890633
-mas "LINE", id: 539883307
-mas "Slack", id: 803453959
-mas "Todoist", id: 585829637
-mas "Xcode", id: 497799835
-vscode "bung87.vscode-gemfile"
-vscode "dbaeumer.vscode-eslint"
-vscode "eamodio.gitlens"
-vscode "esbenp.prettier-vscode"
-vscode "github.copilot"
-vscode "github.copilot-chat"
+# Control your tools with a few keystrokes
+cask "raycast"
+vscode "anthropic.claude-code"
 vscode "github.github-vscode-theme"
-vscode "github.vscode-github-actions"
-vscode "github.vscode-pull-request-github"
-vscode "karunamurti.haml"
-vscode "mame.ruby-typeprof"
-vscode "ms-azuretools.vscode-docker"
 vscode "ms-vscode-remote.remote-containers"
-vscode "ms-vsliveshare.vsliveshare"
-vscode "shardulm94.trailing-spaces"
-vscode "shopify.ruby-lsp"
-vscode "sianglim.slim"
 vscode "streetsidesoftware.code-spell-checker"
 vscode "vscodevim.vim"
+npm "corepack"
