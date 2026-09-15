@@ -1,19 +1,31 @@
-[core]
-  editor = nvim -c \"set fenc=utf-8\"
-  pager  = less
 [include]
-    path = ~/.gitconfig.local
-[color]
-  status = auto
-  diff   = auto
+  path = ~/.gitconfig.local
+[core]
+  editor = nvim
+[init]
+  defaultBranch = main
+[pull]
+  rebase = true
+[push]
+  autoSetupRemote = true
+[fetch]
+  prune = true
+[rebase]
+  autoSquash = true
+  autoStash = true
+[merge]
+  conflictStyle = zdiff3
 [diff]
-  compactionHeuristic = true
-  tool                = difftastic
-  external            = difft
-[difftool]
-  prompt = false
-[difftool "difftastic"]
-  cmd = difft "$LOCAL" "$REMOTE"
+  colorMoved = default
+[commit]
+  cleanup = scissors
+  gpgsign = true
+[gpg]
+  format = ssh
+[gpg "ssh"]
+  allowedSignersFile = ~/.config/git/allowed_signers
+[user]
+  signingkey = ~/.ssh/id_ed25519.pub
 [alias]
   a          = add .
   br         = branch --verbose --verbose --color
@@ -23,7 +35,7 @@
   co         = checkout
   d          = diff
   ds         = diff --stat
-  dmb        = !git branch --merged | egrep -v '\\*|master|release' | xargs git branch -d
+  dmb        = !git branch --merged | egrep -v '\\*|main|master|release' | xargs git branch -d
   f          = fetch
   pf         = fetch --prune
   pl         = pull
@@ -40,15 +52,9 @@
   swf        = !git branch -a | fzf | xargs git switch
   unstage    = reset HEAD --
   wt         = worktree
-[commit]
-  cleanup = scissors
-  gpgsign = true
-[pull]
-  rebase = true
-[init]
-  defaultBranch = main
-[pager]
-  log      = diff-highlight | less
-  show     = diff-highlight | less
-  diff     = diff-highlight | less
-  difftool = true
+[credential "https://github.com"]
+	helper = 
+	helper = !/opt/homebrew/bin/gh auth git-credential
+[credential "https://gist.github.com"]
+	helper = 
+	helper = !/opt/homebrew/bin/gh auth git-credential
