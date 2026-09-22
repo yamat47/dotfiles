@@ -6,6 +6,8 @@ for _brew in /opt/homebrew/bin/brew /usr/local/bin/brew; do
 done
 unset _brew
 
+path=("$HOME/.bin" $path)
+
 # Sourced last so machine-specific PATH wins over brew shellenv; also covers
 # non-login shells (exec zsh, some editor terminals), which skip ~/.zprofile.
 [[ -f "$HOME/.zprofile" ]] && source "$HOME/.zprofile"

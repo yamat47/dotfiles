@@ -9,6 +9,7 @@ alias mv='mv -i'
 
 alias g='git'
 alias lzd='lazydocker'
+alias ga='gmail-alias'
 
 gl() {
   local dir

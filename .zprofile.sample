@@ -1,2 +1,5 @@
 # Machine-specific settings only; not tracked in dotfiles. Homebrew and other
 # shared setup are loaded by ~/.zsh/00-env.zsh, which sources this file last.
+
+# Base address for gmail-alias.
+# export GMAIL_ALIAS_BASE="you@example.com"
