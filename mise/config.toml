@@ -11,8 +11,6 @@ node = "24.15.0"
 ruby = "4.0.6"
 # Latest Yarn 1.x; projects on Yarn 2+ pin their own via packageManager.
 yarn = "1"
-# Fallback TypeScript for ts_ls in Neovim (nvim/lua/plugins/lsp-servers.lua).
-# Stays on 6: TypeScript 7 ships no tsserver, and a 7 on $PATH would make the
-# tsc LSP attach to projects still on older TypeScript.
+# Fallback for ts_ls in Neovim (nvim/lua/plugins/lsp-servers.lua); 7 has no tsserver.
 "npm:typescript" = "6"
 "npm:typescript-language-server" = "latest"
