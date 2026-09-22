@@ -5,6 +5,7 @@
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 eval "$(/opt/homebrew/bin/brew shellenv zsh)"
 ```
+This is only for the current shell; afterwards `zsh/00-env.zsh` loads Homebrew.
 
 ## 2. Clone and install packages
 ```sh
