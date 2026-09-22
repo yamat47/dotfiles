@@ -1,3 +1,16 @@
+[settings]
+# Honor .ruby-version / .node-version in projects.
+idiomatic_version_file_enable_tools = ["ruby", "node"]
+
+[settings.ruby]
+# Use precompiled Ruby builds (jdx/ruby) instead of compiling from source.
+compile = false
+
 [tools]
 node = "24.15.0"
 ruby = "4.0.6"
+# Latest Yarn 1.x; projects on Yarn 2+ pin their own via packageManager.
+yarn = "1"
+# Fallback for ts_ls in Neovim (nvim/lua/plugins/lsp-servers.lua); 7 has no tsserver.
+"npm:typescript" = "6"
+"npm:typescript-language-server" = "latest"
