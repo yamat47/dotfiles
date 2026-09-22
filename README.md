@@ -25,8 +25,11 @@ fill in (`~/.zprofile`, `~/.gitconfig.local`).
 
 Everything is symlinked, so editing `~/.zshrc`, `~/.config/nvim`, etc. edits
 this repository directly: just commit. The one exception is Karabiner, which
-rewrites its own config: copy `~/.config/karabiner/karabiner.json` back here
-after changing settings in its UI.
+rewrites its own config, so it is copied instead. After changing settings in
+its UI, copy it back and commit:
+```sh
+cp ~/.config/karabiner/karabiner.json karabiner/karabiner.json
+```
 
 ## 4. Git commit signing (SSH)
 ```sh
