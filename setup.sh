@@ -54,6 +54,7 @@ copy_if_missing() {
 ### zsh ###
 link "$DOTFILES/.zshrc" "$HOME/.zshrc"
 link "$DOTFILES/zsh"    "$HOME/.zsh"
+link "$DOTFILES/bin"    "$HOME/.bin"
 copy_if_missing "$DOTFILES/.zprofile.sample" "$HOME/.zprofile"
 
 ### Neovim ###

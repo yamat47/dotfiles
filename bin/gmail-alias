@@ -1,0 +1,16 @@
+#!/bin/bash
+# Print a timestamped plus-address (you+20250101120000@example.com) and copy it
+# to the clipboard. The base address comes from $GMAIL_ALIAS_BASE, falling back
+# to `git config user.email`; this repository is public, so none is written here.
+set -eu
+
+email="${GMAIL_ALIAS_BASE:-$(git config user.email || true)}"
+if [[ "$email" != *@* ]]; then
+  echo "gmail-alias: set GMAIL_ALIAS_BASE in ~/.zprofile (or git user.email)" >&2
+  exit 1
+fi
+
+alias="${email/@/+$(date +%Y%m%d%H%M%S)@}"
+echo "$alias"
+printf '%s' "$alias" | pbcopy
+echo "(クリップボードにコピーしました)" >&2

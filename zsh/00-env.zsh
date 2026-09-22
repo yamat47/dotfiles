@@ -1,6 +1,15 @@
-# Non-login shells (exec zsh, some editor terminals) skip ~/.zprofile, which
-# would leave Homebrew off PATH and break everything below. Re-sourcing it in a
-# login shell is harmless: brew shellenv goes through path_helper, which dedups.
+# Re-sourcing below and brew shellenv both prepend without checking.
+typeset -U path fpath
+
+for _brew in /opt/homebrew/bin/brew /usr/local/bin/brew; do
+  [[ -x $_brew ]] && { eval "$($_brew shellenv zsh)"; break; }
+done
+unset _brew
+
+path=("$HOME/.bin" $path)
+
+# Sourced last so machine-specific PATH wins over brew shellenv; also covers
+# non-login shells (exec zsh, some editor terminals), which skip ~/.zprofile.
 [[ -f "$HOME/.zprofile" ]] && source "$HOME/.zprofile"
 
 export LANG=ja_JP.UTF-8
