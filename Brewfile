@@ -61,6 +61,8 @@ cask "iterm2"
 cask "karabiner-elements"
 # Control your tools with a few keystrokes
 cask "raycast"
+# Team communication and collaboration software
+cask "slack"
 vscode "anthropic.claude-code"
 vscode "github.github-vscode-theme"
 vscode "ms-vscode-remote.remote-containers"
