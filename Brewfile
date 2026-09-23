@@ -1,7 +1,13 @@
+tap "databricks/tap", trusted: true
+tap "hashicorp/tap"
+# Official Amazon AWS command-line interface
+brew "awscli"
 # Clone of cat(1) with syntax highlighting and Git integration
 brew "bat"
 # Container runtimes on MacOS (and Linux) with minimal setup
 brew "colima"
+# Reference implementation for the Development Containers specification
+brew "devcontainer"
 # Pack, ship and run any application as a lightweight container
 brew "docker"
 # Docker CLI plugin for extended build capabilities with BuildKit
@@ -44,6 +50,10 @@ brew "zsh-autosuggestions"
 brew "zsh-completions"
 # Fish shell like syntax highlighting for zsh
 brew "zsh-syntax-highlighting"
+# Command-line interface for the Databricks platform
+brew "databricks/tap/databricks"
+# Terraform
+brew "hashicorp/tap/terraform", trusted: true
 # Application uninstaller
 cask "appcleaner"
 # Desktop password and login vault
@@ -61,8 +71,6 @@ cask "iterm2"
 cask "karabiner-elements"
 # Control your tools with a few keystrokes
 cask "raycast"
-# Team communication and collaboration software
-cask "slack"
 vscode "anthropic.claude-code"
 vscode "github.github-vscode-theme"
 vscode "ms-vscode-remote.remote-containers"
