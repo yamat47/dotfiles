@@ -1,4 +1,5 @@
 tap "databricks/tap", trusted: true
+tap "datadog-labs/pack"
 tap "hashicorp/tap"
 # Official Amazon AWS command-line interface
 brew "awscli"
@@ -54,6 +55,8 @@ brew "zsh-completions"
 brew "zsh-syntax-highlighting"
 # Command-line interface for the Databricks platform
 brew "databricks/tap/databricks"
+# Go-based command-line wrapper for easy interaction with Datadog APIs
+brew "datadog-labs/pack/pup", trusted: true
 # Terraform
 brew "hashicorp/tap/terraform", trusted: true
 # Application uninstaller
@@ -73,6 +76,8 @@ cask "iterm2"
 cask "karabiner-elements"
 # Control your tools with a few keystrokes
 cask "raycast"
+# Plugin for AWS CLI to start and end sessions that connect to managed instances
+cask "session-manager-plugin"
 vscode "anthropic.claude-code"
 vscode "github.github-vscode-theme"
 vscode "ms-vscode-remote.remote-containers"
