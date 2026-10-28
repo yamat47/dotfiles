@@ -1,0 +1,84 @@
+#!/bin/zsh
+# List the open PRs whose review was requested from me and open the chosen
+# ones in the browser.
+#   prs           fzf list, oldest first; 2+ days old is shown in red.
+#                 Enter: open (Tab to multi-select) / Ctrl-Y: copy the URL
+#   prs --count   write the number of PRs to ~/.cache/prs-count
+#   prs --prompt  print the cached count and exit 0, or exit 1 when there is
+#                 nothing to review (`when`/`command` of zsh/starship.toml).
+#                 Refreshes the cache in the background when it is older than
+#                 10 minutes, so the prompt itself never waits for GitHub.
+set -eu
+
+CACHE="$HOME/.cache/prs-count"
+# Team review requests are included; use `user-review-requested:@me` for
+# requests addressed to me personally only.
+QUERY=(--review-requested=@me --state=open --limit 100)
+
+write_count() {
+  mkdir -p "${CACHE:h}"
+  print -r -- "$1" > "$CACHE.tmp" && mv "$CACHE.tmp" "$CACHE"
+}
+
+case "${1:-}" in
+  --count)
+    # On failure (offline, gh not logged in) the old count is kept.
+    count="$(gh search prs "${QUERY[@]}" --json url --jq length)"
+    write_count "$count"
+    exit 0 ;;
+  --prompt)
+    # This runs on every prompt, so only builtins: no forks until a refresh is due.
+    # (#qNmm-10) matches the file only if it was modified within the last 10 min.
+    setopt extendedglob
+    if [[ -z "$CACHE"(#qNmm-10) ]]; then
+      # Touch first so concurrent prompts do not all start a refresh.
+      mkdir -p "${CACHE:h}"
+      touch "$CACHE"
+      ( "${0:A}" --count >/dev/null 2>&1 </dev/null & )
+    fi
+    count=
+    read -r count < "$CACHE" 2>/dev/null || true
+    [[ "$count" == <1-> ]] || exit 1
+    print -r -- "$count"
+    exit 0 ;;
+  "") ;;
+  *)
+    echo "usage: prs [--count|--prompt]" >&2
+    exit 2 ;;
+esac
+
+# One request at startup; the preview reads the saved JSON instead of calling
+# GitHub again. Exported because the preview runs in a child shell of fzf.
+export PRS_JSON="$(mktemp)"
+trap 'rm -f "$PRS_JSON"' EXIT
+export PRS_JQ='.[] | select(.url == $u)
+  | "# \(.title)\n\n\(.repository.nameWithOwner)  @\(.author.login)  \(.createdAt[:10])\n\n---\n\n\(.body // "")"'
+
+# gh's stderr is held back so an error does not land on the progress line.
+print -n "レビュー待ちの PR を取得中..." >&2
+if ! err="$(gh search prs "${QUERY[@]}" --json url,title,repository,author,createdAt,body 2>&1 > "$PRS_JSON")"; then
+  print -n "\r\e[K" >&2
+  print -r -- "$err" >&2
+  exit 1
+fi
+print -n "\r\e[K" >&2
+
+count="$(jq length "$PRS_JSON")"
+write_count "$count"
+if (( count == 0 )); then
+  echo "レビュー待ちの PR はありません"
+  exit 0
+fi
+
+# Each line: URL <tab> age <tab> repository <tab> title. The URL column is
+# hidden from the list (--with-nth) and is what a selection returns (--accept-nth).
+jq -r 'sort_by(.createdAt) | .[]
+  | ((now - (.createdAt | fromdateiso8601)) / 86400 | floor) as $d
+  | "\(.url)\t\(if $d >= 2 then "\u001b[31m" else "" end)\($d)d\u001b[0m\t\(.repository.nameWithOwner)\t\(.title)"' "$PRS_JSON" \
+  | fzf --ansi --multi --delimiter '\t' --with-nth 2.. --accept-nth 1 \
+      --header 'Enter: 開く / Ctrl-Y: URL をコピー' --color 'footer:green' \
+      --bind 'ctrl-y:execute-silent(printf %s {1} | pbcopy)+transform-footer(printf "✓ コピーしました: %s" {1})' \
+      --bind 'focus:change-footer()' \
+      --preview 'jq -r --arg u {1} "$PRS_JQ" "$PRS_JSON" | bat -l md --color=always --style=plain' \
+      --preview-window '60%,wrap' \
+  | xargs open
