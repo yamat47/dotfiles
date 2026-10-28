@@ -6,6 +6,8 @@ brew "awscli"
 brew "bat"
 # Container runtimes on MacOS (and Linux) with minimal setup
 brew "colima"
+# Get a file from an HTTP, HTTPS or FTP server
+brew "curl"
 # Reference implementation for the Development Containers specification
 brew "devcontainer"
 # Pack, ship and run any application as a lightweight container

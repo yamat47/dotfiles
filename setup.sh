@@ -57,6 +57,9 @@ link "$DOTFILES/zsh"    "$HOME/.zsh"
 link "$DOTFILES/bin"    "$HOME/.bin"
 copy_if_missing "$DOTFILES/.zprofile.sample" "$HOME/.zprofile"
 
+### curl ###
+link "$DOTFILES/.curlrc" "$HOME/.curlrc"
+
 ### Neovim ###
 link "$DOTFILES/nvim" "$HOME/.config/nvim"
 
