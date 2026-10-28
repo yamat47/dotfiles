@@ -6,6 +6,12 @@ for _brew in /opt/homebrew/bin/brew /usr/local/bin/brew; do
 done
 unset _brew
 
+# Homebrew curl is keg-only; prefer it over /usr/bin/curl, whose SecureTransport
+# backend trusts keychain roots regardless of the CA file.
+if [[ -d ${HOMEBREW_PREFIX:-/opt/homebrew}/opt/curl/bin ]]; then
+  path=(${HOMEBREW_PREFIX:-/opt/homebrew}/opt/curl/bin $path)
+fi
+
 path=("$HOME/.bin" $path)
 
 # Sourced last so machine-specific PATH wins over brew shellenv; also covers

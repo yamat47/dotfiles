@@ -7,7 +7,7 @@ idiomatic_version_file_enable_tools = ["ruby", "node"]
 compile = false
 
 [tools]
-node = "24.15.0"
+node = "24.22.1"
 ruby = "4.0.6"
 # Latest Yarn 1.x; projects on Yarn 2+ pin their own via packageManager.
 yarn = "1"
