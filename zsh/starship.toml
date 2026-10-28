@@ -11,6 +11,7 @@ $nodejs\
 $ruby\
 $python\
 $golang\
+${custom.prs}\
 $time
 $status\
 $character"""
@@ -78,6 +79,18 @@ format = '[$symbol($version)( \($virtualenv\))]($style) '
 symbol = "\uE627 "
 style = 'teal'
 format = '[$symbol($version)]($style) '
+
+# PRs awaiting my review. The same command serves as `when` and `command`:
+# starship hides a custom module only via `when`'s exit status, and `prs --prompt`
+# exits 1 when there is nothing to review (it also refreshes its cache in the
+# background every 10 minutes). Both runs are cheap: builtins only.
+[custom.prs]
+command = 'prs --prompt'
+when = 'prs --prompt'
+shell = ['sh']
+symbol = "\uF407 "
+style = 'yellow'
+format = '[$symbol$output]($style) '
 
 [time]
 disabled = false
