@@ -28,3 +28,6 @@ export STARSHIP_CONFIG="$HOME/.zsh/starship.toml"
 
 # Must precede compinit (20-completion.zsh) to be picked up.
 fpath=("$HOME/.zsh/completion" $fpath)
+
+# Casks flagged auto_updates are skipped by plain `brew upgrade`; keep Homebrew the single update path.
+export HOMEBREW_UPGRADE_GREEDY=1
